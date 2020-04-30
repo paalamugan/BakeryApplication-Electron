@@ -14,7 +14,7 @@ import { OrderStatus } from '../models/order-status';
 })
 
 export class MainComponent implements OnInit {
-  title ='anumod bakery'
+  title ='samayam bakery'
   public hasLoggedIn: boolean = true;
   public Admin: boolean;
   private shop: Shop;
