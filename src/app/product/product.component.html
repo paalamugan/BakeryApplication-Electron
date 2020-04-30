@@ -1,0 +1,32 @@
+<div class="col-md-8">
+  <h1 class="header_1">Add product</h1>
+  <form class="example-form" #addproduct="ngForm">
+      <mat-form-field class="example-full-width">
+          <input matInput #itemNameInput="matInput"  [(ngModel)]="item.modelNumber" pattern="^[a-zA-Z0-9_-]{3,15}$" #modelname="ngModel" placeholder="Model No" name="item.model" type="text" autofocus required>
+        </mat-form-field>
+        <span style="color: red;" *ngIf="modelname.touched && !modelname.valid">
+            <div *ngIf="modelname.errors.required">*field is required*</div>
+            <div *ngIf="modelname.errors.pattern">*model name must a character or number*</div>
+          </span>
+    <mat-form-field class="example-full-width">
+      <input matInput  [(ngModel)]="item.name"  pattern="[a-zA-Z '-,;.]*" #itemname="ngModel" placeholder="Item Name" name="item.name" type="text">
+    </mat-form-field>
+    <span style="color: red;" *ngIf="itemname.touched && !itemname.valid">
+        <div *ngIf="itemname.errors.required">*field is required*</div>
+        <div *ngIf="itemname.errors.pattern">*Name must be a character*</div>
+      </span>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="item.quantity" type="number" placeholder="Quanity" #quantity="ngModel" name="item.quantity" required>
+    </mat-form-field>
+    <span style="color: red;" *ngIf="quantity.touched && !quantity.valid">
+        <div *ngIf="quantity.errors.required">*field is required*</div>
+      </span>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="item.price" type="number" placeholder="Price" #price="ngModel" name="item.price" required>
+    </mat-form-field>
+    <span style="color: red;" *ngIf="price.touched && !price.valid">
+        <div *ngIf="price.errors.required">*field is required*</div>
+      </span>
+    <button mat-button (click)="onSubmit()" [disabled]="addproduct.invalid" href="#" style="background-color:#68829e;color:white ">Add Product</button>
+  </form>
+</div>

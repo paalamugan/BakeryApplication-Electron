@@ -1,0 +1,398 @@
+<!-- <div *ngIf="!hasLoggedIn">
+   <store-selector (chooseuser)="userenter($event)" (chooseShop)="afterShopSelected($event)"></store-selector> 
+</div> -->
+<!-- <div *ngIf="hasLoggeduser">
+    <app-admin (chooseuser)="userenter($event)"></app-admin>
+  </div> -->
+<!--The content below is only a placeholder and can be replaced.-->
+<div *ngIf="hasLoggedIn; then haslog; else elseblock"></div>
+<ng-template #haslog>
+    <store-selector (chooseuser)="userenter($event)" (chooseShop)="afterShopSelected($event)"></store-selector>
+</ng-template>
+<ng-template #elseblock>
+    <div *ngIf="Admin; then haslog; else elseblock"></div>
+    <ng-template #haslog>
+        <div class="container-fluid">
+            <div class="col-md-12" >
+               
+              <div class="row">
+                
+                <div class="col-md-2">
+                  <div class="bakery_logo">
+                  <span class="anumod">ANUMOD </span>
+                  <span class="bakery">BAKERY</span>
+                </div>
+                  <!-- <h4>{{title | uppercase}}</h4> -->
+                </div>
+                
+                <div class="col-md-8" style="padding: 7px;">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                              </button>
+                     
+                      </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-static-top">
+                    <li role="presentation"  >
+                      <a routerLink='bill' routerLinkActive="active">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <!-- <li>
+                          <a routerLink='product' routerLinkActive="active">Add Products</a>
+                        </li> -->
+                        <li>
+                          <a routerLink='product-list' routerLinkActive="active">List Products</a>
+                        </li> 
+                        <!-- <li>
+                            <a routerLink='flavour-add' routerLinkActive="active">Add Flavours</a>
+                          </li>  -->
+                          <li>
+                              <a routerLink='flavour-list' routerLinkActive="active">List Flavours</a>
+                            </li> 
+                      </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Orders
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a routerLink='orderlist' routerLinkActive="active">Orders List </a>
+                            </li>
+                            <li>
+                                <a routerLink='pendinglist' routerLinkActive="active">Pending List</a>
+                              </li>
+                              <li>
+                                  <a routerLink='Inproductionlist' routerLinkActive="active">InProduction List</a>
+                                </li>
+                      </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <!-- <li>
+                          <a routerLink='customer-add' routerLinkActive="active">Add Customers</a>
+                        </li> -->
+                        <li>
+                          <a routerLink='customer-list' routerLinkActive="active">List Customers</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sales
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a routerLink='sales-report' routerLinkActive="active">Sales Report</a>
+                        </li>
+                        <!-- <li>
+                            <a routerLink='All-Sales-Report' routerLinkActive="active">All Sales Report</a>
+                          </li> -->
+                      </ul>
+                    </li>
+                    <!-- <li role="presentation" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shops
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a routerLink='shops-add' routerLinkActive="active">Add Shops</a>
+                          </li>
+                          <li>
+                              <a routerLink='shops-list' routerLinkActive="active">List Shops</a>
+                            </li>
+                        </ul>
+                      </li> -->
+          
+                  </ul>
+          
+                </div>
+              </nav>
+                </div>
+              
+                <div class="col-md-2">
+                 
+                  <button mat-button  routerLink='' routerLinkActive="active" (click)="changeShopName()" class="main-shopname"><h5 class="admin-1">{{shop.shopName | uppercase}} SHOP</h5></button>
+                
+                
+                </div>
+          
+          
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                  <router-outlet></router-outlet>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+      </ng-template>
+      <ng-template #elseblock>
+          <div class="container-fluid">
+              <div class="col-md-12" >
+                 
+                <div class="row">
+                  
+                  <div class="col-md-2">
+                      <div class="bakery_logo">
+                          <span class="anumod">ANUMOD </span>
+                          <span class="bakery">BAKERY</span>
+                        </div>
+                  </div>
+                  
+                  <div class="col-md-8" style="padding: 7px;">
+                      <nav class="navbar navbar-default">
+                          <div class="navbar-header">
+                              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                  <span class="sr-only">Toggle navigation</span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                </button>
+                       
+                        </div>
+                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-static-top">
+                      <li role="presentation"  >
+                        <a routerLink='bill' routerLinkActive="active">Home<span class="sr-only">(current)</span></a>
+                      </li>
+                      <li role="presentation" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a routerLink='product' routerLinkActive="active">Add Products</a>
+                          </li>
+                          <li>
+                            <a routerLink='product-list' routerLinkActive="active">List Products</a>
+                          </li> 
+                          <li>
+                              <a routerLink='flavour-add' routerLinkActive="active">Add Flavours</a>
+                            </li> 
+                            <li>
+                                <a routerLink='flavour-list' routerLinkActive="active">List Flavours</a>
+                              </li> 
+                        </ul>
+                      </li>
+                      <li role="presentation" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Orders
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a routerLink='orderlist' routerLinkActive="active">Orders List </a>
+                          </li>
+                          <li>
+                              <a routerLink='pendinglist' routerLinkActive="active">Pending List</a>
+                            </li>
+                            <li>
+                                <a routerLink='Inproductionlist' routerLinkActive="active">InProduction List</a>
+                              </li>
+                            
+                        </ul>
+                      </li>
+                      <li role="presentation" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a routerLink='customer-add' routerLinkActive="active">Add Customers</a>
+                          </li>
+                          <li>
+                            <a routerLink='customer-list' routerLinkActive="active">List Customers</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li role="presentation" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sales
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a routerLink='sales-report' routerLinkActive="active">Sales Report</a>
+                          </li>
+                          <li>
+                              <a routerLink='All-Sales-Report' routerLinkActive="active">All Sales Report</a>
+                            </li>
+                        </ul>
+                      </li>
+                      <li role="presentation" class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shops
+                            <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a routerLink='shops-add' routerLinkActive="active">Add Shops</a>
+                            </li>
+                            <li>
+                                <a routerLink='shops-list' routerLinkActive="active">List Shops</a>
+                              </li>
+                          </ul>
+                        </li>
+            
+                    </ul>
+            
+                  </div>
+                </nav>
+                  </div>
+                
+                  <div class="col-md-2 ">
+                    
+                    <button mat-button  routerLink='' routerLinkActive="active" (click)="Adminlogout()" class="main-shopname"><h5 class="admin-1">{{username | uppercase}}</h5></button>
+                  </div>
+                 
+            
+            
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-10">
+                    <router-outlet></router-outlet>
+                  </div>
+                </div>
+              </div>
+            </div>
+         
+        </ng-template>
+
+</ng-template>
+
+
+
+
+
+
+<!-- <div *ngIf="hasLoggeduser" class="container-fluid">
+    <div class="col-md-12" >
+       
+      <div class="row">
+        
+        <div class="col-md-2">
+          <h3>{{title |uppercase}}</h3>
+        </div>
+        
+        <div class="col-md-7" style="padding: 7px;">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+             
+              </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-static-top">
+            <li role="presentation"  >
+              <a routerLink='bill' routerLinkActive="active">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a routerLink='product' routerLinkActive="active">Add Products</a>
+                </li>
+                <li>
+                  <a routerLink='product-list' routerLinkActive="active">List Products</a>
+                </li> 
+                <li>
+                    <a routerLink='flavour-add' routerLinkActive="active">Add Flavours</a>
+                  </li> 
+                  <li>
+                      <a routerLink='flavour-list' routerLinkActive="active">List Flavours</a>
+                    </li> 
+              </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Orders
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a routerLink='orderlist' routerLinkActive="active">List Orders</a>
+                </li>
+              </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a routerLink='customer-add' routerLinkActive="active">Add Customers</a>
+                </li>
+                <li>
+                  <a routerLink='customer-list' routerLinkActive="active">List Customers</a>
+                </li>
+              </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sales
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a routerLink='sales-report' routerLinkActive="active">Sales Report</a>
+                </li>
+              </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shops
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a routerLink='shops-add' routerLinkActive="active">Add Shops</a>
+                  </li>
+                  <li>
+                      <a routerLink='shops-list' routerLinkActive="active">List Shops</a>
+                    </li>
+                </ul>
+              </li>
+  
+          </ul>
+  
+        </div>
+      </nav>
+        </div>
+      
+        <div class="col-md-2 main-shop1 ">
+           <button mat-button (click)="changeShopName()" class="main-shop"><h3>{{shop.shopName | uppercase}} SHOP</h3></button> 
+          <button mat-button (click)="changeShopName()" class="main-shop"><h3>{{username | uppercase}}</h3></button>
+        </div>
+  
+  
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div> -->

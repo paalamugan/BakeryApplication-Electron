@@ -1,0 +1,79 @@
+<h1 class="header_1">Order List</h1>
+<div class="example-container mat-elevation-z8">
+ 
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <table mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="customer">
+      <th mat-header-cell *matHeaderCellDef> CustomerName </th>
+      <td mat-cell *matCellDef="let element"> {{element.customer.name}} </td>
+    </ng-container>
+
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="advance">
+      <th mat-header-cell *matHeaderCellDef> Advance </th>
+      <td mat-cell *matCellDef="let element"> {{element.advance}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef> Total </th>
+      <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+    </ng-container>
+    <ng-container matColumnDef="orderedDate">
+      <th mat-header-cell *matHeaderCellDef> OrderedDate </th>
+      <td mat-cell *matCellDef="let element"> {{element.orderedDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="expectedDate">
+      <th mat-header-cell *matHeaderCellDef> ExpectedDate </th>
+      <td mat-cell *matCellDef="let element"> {{element.expectedDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderedTime">
+      <th mat-header-cell *matHeaderCellDef> OrderedTime </th>
+      <td mat-cell *matCellDef="let element"> {{element.orderedTime}} </td>
+    </ng-container>
+    <ng-container matColumnDef="expectedTime">
+      <th mat-header-cell *matHeaderCellDef> ExpectedTime </th>
+      <td mat-cell *matCellDef="let element"> {{element.expectedTime}} </td>
+    </ng-container>
+    <ng-container matColumnDef="orderStatus">
+      <th mat-header-cell *matHeaderCellDef> OrderStatus </th>
+      <td mat-cell *matCellDef="let element"> {{element.orderStatus.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="shop">
+      <th mat-header-cell *matHeaderCellDef> Shop </th>
+      <td mat-cell *matCellDef="let element"> {{element.shop.shopName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef> Mobile </th>
+      <td mat-cell *matCellDef="let element"> {{element.customer.mobile}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actioncolumn">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon (click)="editorder(element)" class="cusor">edit</mat-icon> 
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

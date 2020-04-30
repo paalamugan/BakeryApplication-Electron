@@ -1,0 +1,80 @@
+<mat-card-header>
+    <mat-toolbar class="toolbar">
+      <mat-card-title>All Sales Report Details</mat-card-title>
+      <span class="toolbar-spacer"></span>
+      <mat-icon (click)="onNoClick()" style="float: right;" class="cusor">cancel</mat-icon>
+    </mat-toolbar>
+  </mat-card-header>
+  
+  <mat-card-content>
+  
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <div class="col-md-12">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input [disabled]="true" readonly="true" [ngModel]="data.id" matInput placeholder="Id" name="id">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput [disabled]="true" readonly="true" [ngModel]="data.customer.name" name="customername" [value]="data.customer.name"  name="customerName" placeholder="Customer Name">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <input matInput [disabled]="true" readonly="true" [ngModel]="data.customer.mobile"  name="customerMobile" placeholder="Mobile Number">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-6">
+              <mat-form-field class="example-full-width">
+                <input matInput [disabled]="true" readonly="true" [ngModel]="data.total"  name="total" placeholder="Total">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-12">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput [disabled]="true" readonly="true" [ngModel]="data.advance"  name="advance" placeholder="Advance">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput [disabled]="true" readonly="true" [ngModel]="balance"  name="balance" placeholder="Balance">
+                  </mat-form-field>
+                </div>
+              </div>
+        <div class="col-md-12">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Order Status" [(ngModel)]="data.orderStatus" name="orderStatus">
+                <mat-option *ngFor="let orderStatus of orderStatuses" [value]="orderStatus">
+                  {{orderStatus.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-12">
+        <div class="col-md-3">
+          <button type="submit" class="btn-success">
+  
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
+      </div>
+  
+  
+    </form>
+  
+  </mat-card-content>

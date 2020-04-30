@@ -1,0 +1,15 @@
+.main-shopname{
+    color: aliceblue;
+    background-color:#68829e;
+    position: relative;
+    top: 11px;
+    /* margin: 14px; */
+    padding-bottom: 10px;
+    padding-left: 75px;
+}
+
+.admin-1{
+    position: relative;
+    top: 7px;
+    right: 30px;
+}
